@@ -10,11 +10,7 @@ pipeline {
             steps {
             bat 'mvn -f AtelierAgl/pom.xml install'
             }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
+           
      }
      
   
