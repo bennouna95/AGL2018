@@ -17,11 +17,7 @@ pipeline {
             }
      }
      
-        stage ('JUnit tests'){
-        steps{
-            bat 'mvn -f AtelierAgl/pom.xml test'
-        }
-        }
+  
         stage ('Code Coverage'){
         steps{
             bat 'mvn -f AtelierAgl/pom.xml clean cobertura:cobertura -Pmetrics -Dcobertura.report.format=xml'
