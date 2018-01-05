@@ -27,9 +27,9 @@ pipeline {
             
              stage('Analyse statique') {
                  steps{
-                        bat 'mvn -f AtelierAgl/pom.xml checkstyle:checkstyle findbugs:findbugs '
+                        bat 'mvn -f AtelierAgl/pom.xml checkstyle:checkstyle '
                         checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '**/target/checkstyle-result.xml', unHealthy: ''
-                         findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: ' **/target/findbugsXml.xml', unHealthy: ''
+                        
 
                  }
 }
