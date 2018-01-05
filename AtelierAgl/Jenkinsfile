@@ -10,13 +10,14 @@ pipeline {
             steps {
             bat 'mvn -f AtelierAgl/pom.xml install'
             }
+          
            
      }
      
      stage ('Code Coverage'){
 		steps{
-			bat 'mvn -f AtelierAgl/pom.xml clean cobertura:cobertura'
-                           step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/coverage.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
+			bat 'mvn -f AtelierAgl/pom.xml clean cobertura:cobertura -Pmetrics -Dcobertura.report.format=xml'
+                           step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/target/site/cobertura/coverage.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
 		}
 		}
      
