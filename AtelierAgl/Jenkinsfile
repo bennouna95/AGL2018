@@ -22,11 +22,7 @@ pipeline {
 		}
      
   
- stage('Generate Documentation and site') {
-                 steps{
-                        bat 'mvn -f AtelierAgl/pom.xml clean javadoc:javadoc site'
-                 }
-}
+
             
             
              stage('Analyse statique') {
